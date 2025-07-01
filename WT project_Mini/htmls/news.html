@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible=IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital News - Newspaper Style</title>
+    <link rel="stylesheet" href="../Assest/Styles/styles news.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">Hospital News & Services</div>
+    </header>
+
+    <!-- News Section in Newspaper Style -->
+    <section id="news">
+        <h2>Latest Hospital News</h2>
+        <div class="news-container">
+            <div class="news-card large">
+                <h3>New Medical Breakthrough in Cancer Treatment</h3>
+                <p>Researchers at the Global Medical Institute have unveiled a new therapy that significantly improves
+                    recovery rates for certain types of cancer. This breakthrough uses targeted gene therapy and
+                    advanced drug delivery systems.</p>
+                <p class="read-more"><a href="#">Read More</a></p>
+            </div>
+            <div class="news-card">
+                <h3>Updated Health Guidelines for Hospitals Post-COVID</h3>
+                <p>The World Health Organization (WHO) has issued updated protocols to ensure hospital safety, including
+                    sanitization and visitor policies. Hospitals are adopting these to prevent new health threats.</p>
+                <p class="read-more"><a href="#">Read More</a></p>
+            </div>
+            <div class="news-card">
+                <h3>AI in Patient Diagnostics</h3>
+                <p>AI technologies are revolutionizing patient diagnostics by providing faster and more accurate disease
+                    detection, assisting doctors in making better treatment decisions.</p>
+                <p class="read-more"><a href="#">Read More</a></p>
+            </div>
+            <div class="news-card medium">
+                <h3>Community Health Initiatives: A Step Toward Better Care</h3>
+                <p>‘Healthy Neighborhood’ programs are providing free health screenings, vaccinations, and workshops in
+                    underserved areas. This initiative bridges the gap between hospitals and at-home care.</p>
+                <p class="read-more"><a href="#">Read More</a></p>
+            </div>
+            <div class="news-card">
+                <h3>Telemedicine: The New Norm</h3>
+                <p>Hospitals are increasingly adopting telemedicine for remote consultations, allowing patients to
+                    access healthcare without leaving home. This has expanded access to quality care.</p>
+                <p class="read-more"><a href="#">Read More</a></p>
+            </div>
+            <div class="news-card medium">
+                <h3>Improved Emergency Response Times</h3>
+                <p>New coordination software in major hospitals has cut emergency response times by 30%, ensuring faster
+                    medical attention during critical situations.</p>
+                <p class="read-more"><a href="#">Read More</a></p>
+            </div>
+            <div class="news-card">
+                <h3>New Hospitals to Open in Rural Areas</h3>
+                <p>The Ministry of Health plans to build 15 new hospitals in rural regions by 2025, aiming to provide
+                    modern healthcare facilities to remote areas.</p>
+                <p class="read-more"><a href="#">Read More</a></p>
+            </div>
+            <div class="news-card large">
+                <h3>Technological Advancements in Surgery</h3>
+                <p>The RoboSurg X1 system is enhancing surgical precision, enabling minimally invasive procedures. This
+                    reduces patient recovery times and improves outcomes.</p>
+                <p class="read-more"><a href="#">Read More</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Hospital News & Services. All rights reserved.</p>
+    </footer>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/get-news')
+                .then(response => response.json())
+                .then(data => {
+                    const newsFeed = document.getElementById('news-feed');
+                    const keywords = ['hospitality', 'hotel', 'travel', 'accommodation'];
+
+                    // Filter articles for hospitality-related news
+                    const filteredArticles = data.articles.filter(article =>
+                        keywords.some(keyword => article.title.toLowerCase().includes(keyword))
+                    );
+
+                    // Sort articles by published date (if your API provides this)
+                    filteredArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
+                    // Clear existing news items
+                    newsFeed.innerHTML = '';
+
+                    // Display the filtered articles
+                    if (filteredArticles.length > 0) {
+                        filteredArticles.forEach(article => {
+                            const newsItem = document.createElement('div');
+                            newsItem.className = 'news-item';
+                            newsItem.innerHTML = `
+                        <div class="news-title">${article.title}</div>
+                        <div class="news-description">${article.description || 'No description available.'}</div>
+                        <a href="${article.url}" target="_blank">Read more</a>
+                    `;
+                            newsFeed.appendChild(newsItem);
+                        });
+                    } else {
+                        newsFeed.innerHTML = '<p>No latest hospitality news available.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching news:', error);
+                    document.getElementById('news-feed').innerHTML = '<p>Failed to load news articles. Please try again later.</p>';
+                });
+        });
+
+        // server.js
+        const express = require('express');
+        const axios = require('axios');
+        const app = express();
+
+        app.get('/get-news', async (req, res) => {
+            try {
+                const response = await axios.get('https://newsapi.org/v2/everything?q=hospitality&apiKey=YOUR_API_KEY');
+                res.json(response.data);
+            } catch (error) {
+                res.status(500).json({ message: 'Error fetching news', error });
+            }
+        });
+
+        app.listen(3000, () => {
+            console.log('Server running on http://localhost:3000');
+        });
+
+    </script>
+</body>
+
+</html>

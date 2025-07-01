@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remedies</title>
+    <link rel="stylesheet" href="../Assest/Styles/firstpage.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            /* Ensure full height */
+            margin: 0;
+            /* Reset margins */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            position: relative;
+            /* Position relative for the pseudo-element */
+            margin: 0;
+            padding: 0;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url(background\ for\ remediation\ page.jpg);
+            /* Path to your background image */
+            background-size: cover;
+            /* Cover the entire page */
+            background-position: center;
+            /* Center the background */
+            opacity: 0.3;
+            /* Adjust the opacity here */
+            z-index: -1;
+            /* Place the background behind other content */
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: darkblue;
+            margin: 20px 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        .remedies-section {
+            display: inline-block;
+            width: 48%;
+            vertical-align: top;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            background-color: lightblue;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: white;
+            background-color: blue;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .medical-remedies,
+        .home-remedies {
+            color: darkblue;
+            font-size: 25px;
+            list-style-type: none;
+            padding: 0px;
+        }
+
+        .medical-remedies li,
+        .home-remedies li {
+            display: block;
+            padding: 10px;
+            background-color: white;
+            margin: 5px 0;
+            border-radius: 5px;
+            box-shadow: 0 0px 6px rgba(0, 0, 0, 0.1);
+
+
+        }
+        header{
+            font-family: cursive;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1><span id="disease-name"></span></h1>
+    </header>
+
+    <div class="content">
+        <div class="remedies-section">
+            <h2>Medical Remedies</h2>
+            <ul id="medical-remedies" class="medical-remedies">
+                <!-- Medical remedies will be added here dynamically -->
+            </ul>
+        </div>
+
+        <div class="remedies-section">
+            <h2>Home Remedies</h2>
+            <ul id="home-remedies" class="home-remedies">
+                <!-- Home remedies will be added here dynamically -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        let disease = urlParams.get('disease');
+
+        // Capitalize the first letter of the disease for consistent display
+        if (disease) {
+            disease = disease.charAt(0).toUpperCase() + disease.slice(1).toLowerCase();
+        }
+
+        // Update the disease name in the header
+        if (disease) {
+            document.getElementById('disease-name').textContent = disease;
+        } else {
+            document.getElementById('disease-name').textContent = "Please enter a valid disease.";
+        }
+
+        // Medical and Home Remedies data for different diseases
+        const remediesData = {
+            "High Blood Pressure": {
+                medical: ["ACE inhibitors", "Beta blockers", "Diuretics"],
+                home: ["Reduce salt intake", "Exercise regularly", "Eat more potassium-rich foods"]
+            },
+            "Lung Cancer": {
+                medical: ["Chemotherapy", "Radiation therapy", "Targeted drug therapy"],
+                home: ["Quit smoking", "Breathing exercises", "Healthy diet"]
+            },
+            // Additional diseases and remedies go here...
+            "Acne": {
+                medical: ["Topical retinoids", "Benzoyl peroxide", "Oral antibiotics"],
+                home: ["Wash your face twice daily", "Use tea tree oil", "Apply aloe vera"]
+            },
+            "Blood Clots": {
+                medical: ["Anticoagulants", "Compression stockings", "Thrombolytics"],
+                home: ["Stay active", "Elevate affected areas", "Drink plenty of fluids"]
+            },
+            "Diabetes": {
+                medical: ["Insulin therapy", "Metformin", "Sulfonylureas"],
+                home: ["Maintain a healthy diet", "Exercise regularly", "Monitor blood sugar levels"]
+            },
+            "Fever": {
+                medical: ["Acetaminophen", "Ibuprofen", "Aspirin"],
+                home: ["Drink plenty of fluids", "Rest", "Use cold compresses"]
+            },
+            "Headaches": {
+                medical: ["Pain relievers (ibuprofen, aspirin)", "Triptans", "Anti-nausea medications"],
+                home: ["Apply peppermint oil", "Drink ginger tea", "Stay in a dark, quiet room"]
+            },
+            "Thyroid Disease": {
+                medical: ["Levothyroxine", "Antithyroid medications", "Radioactive iodine"],
+                home: ["Avoid processed foods", "Increase iodine intake", "Stay hydrated"]
+            },
+            "ACL Injuries": {
+                medical: ["ACL reconstruction surgery", "Physical therapy", "Pain relievers"],
+                home: ["Ice packs", "Elevate the injured leg", "Compression bandages"]
+            },
+            "Acute Renal Failure": {
+                medical: ["Intravenous fluids", "Medications to manage potassium levels", "Dialysis"],
+                home: ["Monitor fluid intake", "Avoid high-potassium foods", "Maintain a low-protein diet"]
+            },
+            "Allergies": {
+                medical: ["Antihistamines", "Nasal corticosteroids", "Immunotherapy"],
+                home: ["Use air purifiers", "Drink nettle tea", "Keep windows closed during allergy seasons"]
+            },
+            "Alzheimer's Disease": {
+                medical: ["Donepezil", "Memantine", "Cognitive therapy"],
+                home: ["Brain-healthy diet", "Mental exercises", "Reduce stress with meditation"]
+            },
+            "Anaphylaxis": {
+                medical: ["Epinephrine injection", "Antihistamines", "Oxygen therapy"],
+                home: ["Immediate medical attention", "Avoid known allergens", "Stay hydrated"]
+            },
+            "Anemia": {
+                medical: ["Iron supplements", "Vitamin B12 injections", "Blood transfusions"],
+                home: ["Eat iron-rich foods", "Take vitamin C", "Avoid coffee and tea with meals"]
+            },
+            "Bedbugs": {
+                medical: ["Topical antihistamines for itching", "Corticosteroid creams"],
+                home: ["Wash bedding in hot water", "Use mattress encasements", "Vacuum and declutter the affected areas"]
+            },
+            "Biologics": {
+                medical: ["Biologic therapies (adalimumab, infliximab)", "Immunotherapy for autoimmune diseases"],
+                home: ["Supportive care and lifestyle changes for chronic conditions", "Maintain a balanced diet and regular exercise"]
+            },
+            "Bipolar Disorder": {
+                medical: ["Mood stabilizers (e.g., lithium)", "Antipsychotic medications", "Antidepressants"],
+                home: ["Regular exercise", "Mindfulness meditation", "Maintaining a consistent routine"]
+            },
+            "Birth Control": {
+                medical: ["Hormonal contraceptives (pills, patches, IUDs)", "Barrier methods (condoms, diaphragms)"],
+                home: ["Tracking menstrual cycles", "Natural family planning methods"]
+            },
+            "Bites & Stings": {
+                medical: ["Antihistamines for allergic reactions", "Topical corticosteroids"],
+                home: ["Cold compress to reduce swelling", "Baking soda paste for itching"]
+            },
+            "Bladder Cancer": {
+                medical: ["Surgery (TURBT, cystectomy)", "Immunotherapy", "Chemotherapy"],
+                home: ["Stay hydrated", "Increase fruit and vegetable intake"]
+            },
+            "Bladder Health": {
+                medical: ["Antibiotics for infections", "Medications for overactive bladder"],
+                home: ["Kegel exercises", "Drink cranberry juice"]
+            },
+            "Bloating": {
+                medical: ["Prokinetics", "Antispasmodics"],
+                home: ["Peppermint tea", "Ginger tea", "Avoiding carbonated drinks"]
+            },
+            "Blood Disorders": {
+                medical: ["Iron supplements for anemia", "Blood transfusions"],
+                home: ["Increase iron-rich foods (spinach, red meat)", "Vitamin C to enhance iron absorption"]
+            },
+            "Bone Cancer": {
+                medical: ["Chemotherapy", "Radiation therapy", "Surgery"],
+                home: ["Adequate calcium and vitamin D intake", "Gentle exercises"]
+            },
+            "Botulism": {
+                medical: ["Antitoxin treatment", "Hospital care for severe cases"],
+                home: ["Avoiding improperly canned foods", "Supportive care"]
+            },
+            "Bradycardia": {
+                medical: ["Medications to increase heart rate", "Pacemaker implantation"],
+                home: ["Stay active with light exercises", "Avoiding excessive alcohol intake"]
+            },
+            "Brain & Nervous System": {
+                medical: ["Anticonvulsants", "Medications for specific conditions (e.g., Parkinson's)"],
+                home: ["Mental exercises", "Regular physical activity"]
+            },
+            "Brain Tumors": {
+                medical: ["Surgery", "Radiation therapy", "Chemotherapy"],
+                home: ["Healthy diet rich in antioxidants", "Stress management techniques"]
+            },
+            "Breast Cancer": {
+                medical: ["Surgery (lumpectomy, mastectomy)", "Radiation therapy", "Hormonal therapy"],
+                home: ["Healthy diet", "Regular exercise", "Support groups"]
+            },
+            "Breathing Emergencies": {
+                medical: ["Bronchodilators", "Epinephrine for anaphylaxis"],
+                home: ["Staying calm and using a rescue inhaler", "Avoiding allergens"]
+            },
+            "Broken Bones": {
+                medical: ["Immobilization with casts or splints", "Surgery in severe cases"],
+                home: ["Calcium and vitamin D intake", "Rest and elevation"]
+            },
+            "Bronchitis": {
+                medical: ["Bronchodilators", "Corticosteroids"],
+                home: ["Steam inhalation", "Staying hydrated"]
+            },
+            "Bunions": {
+                medical: ["Orthotic devices", "Surgery for severe cases"],
+                home: ["Wearing comfortable shoes", "Soaking feet in warm water"]
+            },
+            "Cancer": {
+                medical: ["Chemotherapy", "Radiation therapy", "Immunotherapy"],
+                home: ["Eat a balanced diet rich in fruits and vegetables", "Stay hydrated", "Practice stress-reduction techniques"]
+            },
+            "Carbon Monoxide Poisoning": {
+                medical: ["Hyperbaric oxygen therapy", "Medications for symptoms"],
+                home: ["Install carbon monoxide detectors", "Ensure proper ventilation", "Avoid idling vehicles in enclosed spaces"]
+            },
+            "Caregiving": {
+                medical: ["Support groups", "Therapy for mental health support"],
+                home: ["Take regular breaks", "Practice self-care", "Educate yourself about the patient's condition"]
+            },
+            "Carpal Tunnel Syndrome": {
+                medical: ["Wrist splints", "Corticosteroid injections", "Surgery"],
+                home: ["Rest your wrist", "Apply ice packs", "Do wrist exercises"]
+            },
+            "Cataracts": {
+                medical: ["Surgery to remove cataracts", "Lens replacement"],
+                home: ["Wear sunglasses to protect from UV rays", "Maintain a healthy diet with antioxidants"]
+            },
+            "Celiac Disease": {
+                medical: ["Gluten-free diet", "Nutritional supplements"],
+                home: ["Read food labels carefully", "Avoid cross-contamination with gluten-containing foods"]
+            },
+            "Cerebral Palsy": {
+                medical: ["Physical therapy", "Occupational therapy", "Medications for muscle control"],
+                home: ["Encourage regular physical activity", "Create a supportive environment"]
+            },
+            "Cervical Cancer": {
+                medical: ["Surgery", "Chemotherapy", "Radiation therapy"],
+                home: ["Regular screenings", "Maintain a healthy weight", "Stay physically active"]
+            },
+            "Chagas Disease": {
+                medical: ["Antiparasitic medications", "Symptomatic treatment"],
+                home: ["Avoid insect bites", "Maintain good hygiene"]
+            },
+            "Chemotherapy": {
+                medical: ["Chemotherapy drugs", "Targeted therapies"],
+                home: ["Eat small, frequent meals", "Stay hydrated", "Manage nausea with ginger"]
+            },
+            "Chest Pain": {
+                medical: ["Medications for heart conditions", "Angioplasty"],
+                home: ["Avoid strenuous activities", "Practice relaxation techniques"]
+            },
+            "Chickenpox": {
+                medical: ["Antiviral medications", "Pain relievers"],
+                home: ["Calamine lotion for itching", "Oatmeal baths"]
+            },
+            "Childhood Cancer": {
+                medical: ["Chemotherapy", "Radiation therapy"],
+                home: ["Emotional support for the child", "Healthy diet to boost immunity"]
+            },
+            "Childhood Obesity": {
+                medical: ["Nutritional counseling", "Weight management programs"],
+                home: ["Encourage physical activity", "Promote healthy eating habits"]
+            },
+            "Chlamydia": {
+                medical: ["Antibiotics (Azithromycin, Doxycycline)"],
+                home: ["Practice safe sex", "Regular screenings"]
+            },
+            "Cholera": {
+                medical: ["Oral rehydration therapy", "Intravenous fluids"],
+                home: ["Maintain good hygiene", "Drink safe water"]
+            },
+            "Chronic Fatigue Syndrome": {
+                medical: ["Cognitive behavioral therapy", "Medications for sleep"],
+                home: ["Pace activities", "Stress management techniques"]
+            },
+            "Chronic Kidney Disease": {
+                medical: ["Medications to manage symptoms", "Dialysis in severe cases"],
+                home: ["Stay hydrated", "Limit sodium and protein intake"]
+            },
+            "Chronic Pain": {
+                medical: ["Pain relief medications", "Physical therapy"],
+                home: ["Practice mindfulness", "Maintain a healthy lifestyle"]
+            },
+            "Cold & Flu": {
+                medical: ["Antiviral medications (for flu)", "Pain relievers"],
+                home: ["Stay hydrated", "Rest", "Ginger tea for relief"]
+            },
+            "Colon Cancer": {
+                medical: ["Surgery", "Chemotherapy", "Radiation therapy"],
+                home: ["High-fiber diet", "Regular screenings"]
+            },
+            "Common Cold": {
+                medical: ["Decongestants", "Antihistamines"],
+                home: ["Honey and lemon for sore throat", "Steam inhalation"]
+            },
+            "Concussion": {
+                medical: ["Rest and observation", "Pain relief medications"],
+                home: ["Avoid physical and cognitive strain", "Follow a gradual return to activities"]
+            },
+            "Condoms": {
+                medical: ["N/A"],
+                home: ["Educate about safe sex practices", "Regular health check-ups"]
+            },
+            "Constant Cough": {
+                medical: ["Cough suppressants", "Antihistamines"],
+                home: ["Honey for soothing throat", "Steam inhalation"]
+            },
+            "Constipation": {
+                medical: ["Laxatives", "Medications to regulate bowel movements"],
+                home: ["Increase fiber intake", "Stay hydrated"]
+            },
+            "Contact Dermatitis": {
+                medical: ["Topical corticosteroids", "Antihistamines"],
+                home: ["Avoid triggers", "Apply cool compresses"]
+            },
+            "Contact Lenses": {
+                medical: ["Regular eye check-ups", "Corrective lenses"],
+                home: ["Practice good hygiene", "Follow wearing instructions"]
+            },
+            "COPD": {
+                medical: ["Bronchodilators", "Corticosteroids"],
+                home: ["Quit smoking", "Practice breathing exercises"]
+            },
+            "Corneal Ulcer": {
+                medical: ["Antibiotic or antiviral eye drops", "Surgery in severe cases"],
+                home: ["Avoid eye strain", "Practice good hygiene"]
+            },
+            "Coronary Artery Disease": {
+                medical: ["Statins", "Angioplasty", "Bypass surgery"],
+                home: ["Heart-healthy diet", "Regular exercise"]
+            },
+            "Coronavirus (COVID-19)": {
+                medical: ["Vaccination", "Antiviral treatments"],
+                home: ["Stay hydrated", "Rest and manage symptoms"]
+            },
+            "Cosmetic Dentistry": {
+                medical: ["Teeth whitening", "Veneers", "Crowns"],
+                home: ["Good oral hygiene", "Avoid sugary foods"]
+            },
+            "Crohn's Disease": {
+                medical: ["Anti-inflammatory medications", "Immunosuppressants"],
+                home: ["Balanced diet", "Manage stress"]
+            },
+            "Cuts & Bruises": {
+                medical: ["Antibiotic ointment", "Stitches for deep cuts"],
+                home: ["Clean with soap and water", "Apply ice to reduce swelling"]
+            },
+            "Cystic Fibrosis": {
+                medical: ["Enzyme supplements", "Antibiotics for lung infections"],
+                home: ["Maintain good nutrition", "Stay active"]
+            },
+            "Deep Vein Thrombosis (DVT)": {
+                medical: ["Anticoagulants", "Compression stockings", "Thrombolytic therapy"],
+                home: ["Stay physically active", "Wear compression socks", "Elevate legs"]
+            },
+            "Dementia": {
+                medical: ["Cholinesterase inhibitors", "Memantine", "Therapies (cognitive stimulation)"],
+                home: ["Memory exercises", "Healthy diet", "Stay physically and mentally active"]
+            },
+            "Dental Health": {
+                medical: ["Dental cleaning", "Fillings", "Root canals"],
+                home: ["Brush twice a day", "Floss regularly", "Limit sugary foods and drinks"]
+            },
+            "Depression": {
+                medical: ["Antidepressants", "Cognitive behavioral therapy", "Psychotherapy"],
+                home: ["Exercise regularly", "Maintain a healthy sleep routine", "Stay socially connected"]
+            },
+            "Diabetes, Carb Counting": {
+                medical: ["Carbohydrate counting", "Insulin therapy", "Monitoring blood sugar"],
+                home: ["Measure portion sizes", "Use carb-counting tools", "Monitor glucose levels regularly"]
+            },
+            "Diabetes, Meal Planning": {
+                medical: ["Nutrition counseling", "Blood sugar management tools", "Insulin therapy"],
+                home: ["Plan balanced meals", "Track carbohydrate intake", "Eat low-glycemic foods"]
+            },
+            "Diabetes, Type 1": {
+                medical: ["Insulin therapy", "Continuous glucose monitors", "Carbohydrate counting"],
+                home: ["Healthy diet", "Regular exercise", "Monitor blood sugar levels"]
+            },
+            "Diabetes, Type 2": {
+                medical: ["Oral medications", "Insulin therapy (if needed)", "Weight management"],
+                home: ["Healthy diet", "Exercise regularly", "Monitor blood sugar levels"]
+            },
+            "Diarrhea": {
+                medical: ["Rehydration solutions", "Anti-diarrheal medications", "Antibiotics (if bacterial)"],
+                home: ["Stay hydrated", "Eat a bland diet (BRAT: Bananas, Rice, Applesauce, Toast)", "Avoid dairy and fatty foods"]
+            },
+            "Digestive Health": {
+                medical: ["Probiotics", "Antacids", "Prescription medications (for conditions like GERD)"],
+                home: ["Eat fiber-rich foods", "Stay hydrated", "Avoid trigger foods (spicy, fatty, etc.)"]
+            },
+            "Diverticulitis": {
+                medical: ["Antibiotics", "Pain relievers", "Surgery (in severe cases)"],
+                home: ["Increase fiber intake", "Avoid seeds and nuts", "Stay hydrated"]
+            },
+            "Down Syndrome": {
+                medical: ["Speech therapy", "Physical therapy", "Educational support"],
+                home: ["Early intervention programs", "Support groups", "Social interaction activities"]
+            },
+            "Dry Eye Syndrome": {
+                medical: ["Artificial tears", "Prescription eye drops", "Punctal plugs"],
+                home: ["Use a humidifier", "Take frequent breaks from screens", "Avoid smoke and dry environments"]
+            },
+            "Dupuytren's Contracture": {
+                medical: ["Collagenase injections", "Needle aponeurotomy", "Surgery (if severe)"],
+                home: ["Stretching exercises", "Massage therapy", "Avoid repetitive hand strain"]
+            },
+            "Ear Infections": {
+                medical: ["Antibiotics", "Ear drops", "Pain relievers"],
+                home: ["Warm compress", "Keep ear dry", "Elevate the head during sleep"]
+            },
+            "Ear, Nose & Throat": {
+                medical: ["Nasal decongestants", "Antibiotics (if bacterial)", "ENT specialist treatments"],
+                home: ["Use a saline nasal spray", "Stay hydrated", "Rest your voice"]
+            },
+            "Eczema": {
+                medical: ["Corticosteroid creams", "Antihistamines", "Immune system modulators"],
+                home: ["Moisturize regularly", "Avoid irritants", "Wear breathable fabrics"]
+            },
+            "Emergency Contraception": {
+                medical: ["Morning-after pill", "Copper IUD insertion", "Prescription emergency contraception"],
+                home: ["Consult with a healthcare provider", "Track menstrual cycle", "Use regular contraception"]
+            },
+            "Emergency Preparedness": {
+                medical: ["First aid kits", "Emergency medications", "Vaccinations"],
+                home: ["Create a family emergency plan", "Prepare a go-bag", "Stay informed on risks"]
+            },
+            "Emphysema": {
+                medical: ["Bronchodilators", "Inhaled steroids", "Oxygen therapy"],
+                home: ["Quit smoking", "Breathing exercises", "Stay active"]
+            },
+            "End of Life": {
+                medical: ["Palliative care", "Pain management", "Hospice care"],
+                home: ["Emotional support", "Advanced care planning", "Maintain comfort at home"]
+            },
+            "Endometrial Cancer": {
+                medical: ["Surgery (hysterectomy)", "Radiation therapy", "Hormone therapy"],
+                home: ["Maintain a healthy diet", "Stay active", "Get regular screenings"]
+            },
+            "Endometriosis": {
+                medical: ["Pain relievers", "Hormonal therapies", "Surgery (laparoscopy)"],
+                home: ["Heat therapy", "Relaxation exercises", "Diet changes"]
+            },
+            "Epilepsy": {
+                medical: ["Antiepileptic drugs", "Vagus nerve stimulation", "Surgical treatment (if needed)"],
+                home: ["Maintain a regular sleep schedule", "Avoid triggers (flashing lights, etc.)", "Stay active"]
+            },
+            "Erectile Dysfunction": {
+                medical: ["PDE5 inhibitors (Viagra)", "Hormone therapy", "Penile implants"],
+                home: ["Exercise regularly", "Reduce stress", "Maintain a healthy diet"]
+            },
+            "Esophageal Cancer": {
+                medical: ["Chemotherapy", "Radiation therapy", "Surgery (esophagectomy)"],
+                home: ["Avoid smoking", "Eat a healthy diet", "Stay active"]
+            },
+            "Eye Health": {
+                medical: ["Prescription glasses", "Eye drops", "Surgical procedures (LASIK, cataract surgery)"],
+                home: ["Eat a diet rich in omega-3s", "Take regular screen breaks", "Wear UV-protective sunglasses"]
+            },
+            "Eyeglasses": {
+                medical: ["Corrective lenses", "Prescription glasses", "Contact lenses"],
+                home: ["Clean glasses regularly", "Use blue light filters", "Rest eyes after long periods of screen use"]
+            },
+            "Fever": {
+                medical: ["Acetaminophen", "Ibuprofen", "Aspirin"],
+                home: ["Drink plenty of fluids", "Rest", "Use cold compresses"]
+            },
+            "Fibromyalgia": {
+                medical: ["Pain relievers", "Antidepressants", "Antiseizure drugs"],
+                home: ["Regular exercise", "Stress management", "Healthy sleep habits"]
+            },
+            "First Aid": {
+                medical: ["Bandages", "Antiseptic ointment", "Pain relievers"],
+                home: ["Clean wounds with water", "Apply ice to reduce swelling", "Elevate injured areas"]
+            },
+            "Flu": {
+                medical: ["Antiviral medications", "Pain relievers", "Cough suppressants"],
+                home: ["Stay hydrated", "Rest", "Use a humidifier"]
+            },
+            "Food Allergies": {
+                medical: ["Epinephrine (EpiPen)", "Antihistamines", "Corticosteroids"],
+                home: ["Avoid allergenic foods", "Read labels carefully", "Wear medical alert bracelets"]
+            },
+            "Foodborne Infections": {
+                medical: ["Rehydration solutions", "Antibiotics (in severe cases)", "Pain relievers"],
+                home: ["Stay hydrated", "Eat bland foods", "Rest and avoid strenuous activities"]
+            },
+            "Foot Health": {
+                medical: ["Orthotic devices", "Pain relievers", "Anti-inflammatory medications"],
+                home: ["Wear proper footwear", "Keep feet clean and dry", "Do foot exercises regularly"]
+            },
+            "Fractures": {
+                medical: ["Casting or splinting", "Surgical repair", "Pain management"],
+                home: ["Rest and immobilize the affected area", "Apply ice packs", "Elevate the injured limb"]
+            },
+            "Funeral Planning": {
+                medical: ["Palliative care consultations", "Funeral service planning with professionals"],
+                home: ["Discuss preferences with family", "Make financial arrangements", "Consider cultural or religious traditions"]
+            },
+            "Fungal Infections": {
+                medical: ["Antifungal creams", "Oral antifungal medications", "Medicated shampoos"],
+                home: ["Keep affected areas dry", "Avoid sharing personal items", "Wear breathable fabrics"]
+            }
+
+            
+        };
+
+
+
+// Function to dynamically display remedies based on selected disease
+function filterDiseases() {
+    const input = document.getElementById('disease-input').value.toLowerCase();
+    const resultsDiv = document.getElementById('search-results');
+    resultsDiv.innerHTML = "";  // Clear previous results
+
+    // Filter disease names based on input
+    const filteredDiseases = Object.keys(remediesData).filter(disease => disease.toLowerCase().includes(input));
+
+    filteredDiseases.forEach(disease => {
+        const div = document.createElement('div');
+        div.textContent = disease;
+        div.onclick = () => {
+            document.getElementById('disease-input').value = disease;  // Set the input to the selected disease
+            resultsDiv.innerHTML = "";  // Clear results
+        };
+        resultsDiv.appendChild(div);
+    });
+}
+
+function searchDisease() {
+    const disease = document.getElementById('disease-input').value;
+    const foundDisease = remediesData[disease];
+
+    if (foundDisease) {
+        // Redirect to remedies page with disease parameter
+        window.location.href = `remedies.html?disease=${encodeURIComponent(disease)}`;
+    } else {
+        alert("Please enter a valid disease name.");
+    }
+}
+function displayRemedies(disease) {
+    const medicalList = document.getElementById('medical-remedies');
+    const homeList = document.getElementById('home-remedies');
+    medicalList.innerHTML = "";  // Clear the list before adding new items
+    homeList.innerHTML = "";
+
+    const foundDisease = Object.keys(remediesData).find(
+        key => key.toLowerCase() === disease.toLowerCase()
+    );
+
+    if (foundDisease && remediesData[foundDisease]) {
+        // Add medical remedies to the list
+        remediesData[foundDisease].medical.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            medicalList.appendChild(li);
+        });
+
+        // Add home remedies to the list
+        remediesData[foundDisease].home.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            homeList.appendChild(li);
+        });
+    } else {
+        // If no remedies found for the disease
+        medicalList.innerHTML = "<li>No medical remedies found for this disease.</li>";
+        homeList.innerHTML = "<li>No home remedies found for this disease.</li>";
+    }
+}
+
+
+
+// Call the function only if a disease is specified
+if (disease) {
+    displayRemedies(disease);
+} else {
+    document.getElementById('medical-remedies').innerHTML = "<li>Please select a disease to view remedies.</li>";
+    document.getElementById('home-remedies').innerHTML = "<li>Please select a disease to view remedies.</li>";
+}
+
+</script>
+
+</body>
+
+</html>

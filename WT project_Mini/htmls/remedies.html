@@ -1,0 +1,407 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Navigator - Your Guide to Health Remedies</title>
+    <link rel="stylesheet" href="../Assest/Styles/remedies.css">
+    <link rel="icon" href="../Assest/images/health-navigator-high-resolution-logo-transparent.png" type="image/x-icon" sizes="128x128">
+    <!-- Favicon link -->
+
+    <style>
+        .suggestions {
+            text-align: center;
+            border: 2px solid #007b5e;
+            margin-left: 150px;
+            margin-right: 150px;
+            margin-bottom: 150px;
+            margin-top: 40px;
+            /* Add this for the border */
+            padding: 20px;
+            /* Optional: Add some padding inside the border */
+            border-radius: 10px;
+            background-color: #4fab4f;
+            /* Light green background */
+
+        }
+
+        .suggestion-list {
+            display: flex;
+            /* Flexbox layout */
+            flex-wrap: wrap;
+            /* Wrap items if they overflow */
+            justify-content: center;
+            /* Center the items horizontally */
+            padding: 0;
+            list-style: none;
+        }
+
+
+        .suggestion-list li {
+            margin: 20px;
+            /* Spacing between each image item */
+            /* Ensures 6 images per row, accounting for margin */
+
+            list-style: none;
+            text-align: center;
+            /* Center the text (image name) below the image */
+        }
+
+        .suggestion-image {
+            width: 140px;
+            height: 140px;
+            margin-bottom: 5px;
+            border-radius: 130px;
+            transition: transform 0.3s ease;
+            /* Smooth scaling effect */
+        }
+
+        .suggestion-image:hover {
+            transform: scale(1.2);
+            /* Image grows on hover */
+        }
+
+        /* Style for the link containing the image and name */
+        .suggestion-list a {
+            text-decoration: none;
+            /* Remove underline from both image and text */
+            color: black;
+            /* Default color for the name */
+            font-weight: bold;
+        }
+
+        /* Hover effect for both the image and name */
+        .suggestion-list a:hover {
+            color: red;
+            /* Change text color to red when hovered */
+        }
+
+        .auth-buttons button {
+            padding: 12px 25px;
+            /* Increase padding for more size */
+            font-size: 18px;
+            /* Increase font size */
+            color: #156c27;
+            /* Button background color */
+            background-color: white;
+            /* Text color */
+            border: none;
+            /* Remove default border */
+            border-radius: 25px;
+            /* Rounded corners */
+            cursor: pointer;
+            /* Change cursor on hover */
+            transition: background-color 0.3s ease;
+            /* Smooth transition for background color */
+        }
+
+        .auth-buttons button:hover {
+            background-color: #065f3d;
+            /* Darker shade on hover */
+        }
+
+
+        .image-name {
+            display: block;
+            /* Display the name below the image */
+            margin-top: 5px;
+            font-weight: bold;
+            /* Smooth color change */
+
+        }
+
+        .user-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border: 2px solid #007b5e;
+            border-radius: 8px;
+            font-size: 14px;
+            display: none;
+
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #069d45;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+        }
+
+        .social-icons img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            /* Makes the image circular */
+            border: 2px solid #fff;
+            /* Optional: Add a white border around the icon for better visibility */
+            transition: transform 0.3s ease;
+        }
+
+        .contact-info {
+            margin-top: 10px;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+            /* Optional: Makes the icon grow slightly on hover */
+        }
+
+        .logo {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        }
+
+        .logo img {
+            width: 400px;
+            /* Adjust this value to the desired width */
+            height: 150px;
+            /* This keeps the aspect ratio intact */
+        }
+
+        .more-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007b5e;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .more-btn:hover {
+            background-color: #065f3d;
+        }
+
+        .search-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        #search-bar {
+            width: 400px;
+            /* Increased width */
+            height: 50px;
+            /* Increased height */
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #007b5e;
+            border-radius: 25px;
+        }
+
+        #search-button {
+            height: 50px;
+            padding: 10px 20px;
+            background-color: #12543b;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-left: 20px;
+        }
+
+        #search-button:hover {
+            background-color: #12543b;
+        }
+
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 10px;
+            width: 30%;
+            /* Adjust the width of the modal */
+            height: 70%;
+            /* Adjust the height of the modal */
+            position: relative;
+            /* Positioning */
+            top: 15%;
+            /* Center vertically */
+            overflow: auto;
+            /* Enable scroll inside modal if needed */
+        }
+
+        .modal-button {
+            align-content: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>Remediation</h1>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="How can we help you?">
+        <button id="search-button" onclick="searchDisease()">Search</button>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="suggestions">
+        <h2>Suggestions:</h2>
+        <ul class="suggestion-list">
+            <!-- Existing Diseases -->
+            <li>
+                <a href="remediesnextpage.html?disease=Lung%20Cancer">
+                    <img src="../Assest/images/lungcancer.jpg" alt="Lung Cancer" class="suggestion-image">
+                    <span class="image-name">Lung Cancer</span>
+                </a>
+            </li>
+            <li>
+                <a href="remediesnextpage.html?disease=Thyroid%20Disease">
+                    <img src="../Assest/images/thyroid disease.jpg" alt="Thyroid Disease" class="suggestion-image">
+                    <span class="image-name">Thyroid Disease</span>
+                </a>
+            </li>
+            <li>
+                <a href="remediesnextpage.html?disease=Acne">
+                    <img src="../Assest/images/Acne image.avif" alt="Acne" class="suggestion-image">
+                    <span class="image-name">Acne</span>
+                </a>
+            </li>
+            <li>
+                <a href="remediesnextpage.html?disease=Blood%20Clots">
+                    <img src="../Assest/images/bloodclot.jpg" alt="Blood Clots" class="suggestion-image">
+                    <span class="image-name">Blood Clots</span>
+                </a>
+            </li>
+            <li>
+                <a href="remediesnextpage.html?disease=Diabetes">
+                    <img src="../Assest/images/Diabetes.jpg" alt="Diabetes" class="suggestion-image">
+                    <span class="image-name">Diabetes</span>
+                </a>
+            </li>
+        </ul>
+
+        <!-- 'More' Button -->
+        <button class="more-btn" id="more-btn" onclick="showMoreDiseases()">More</button>
+
+
+        <!-- Additional Diseases (Initially Hidden) -->
+        <div id="more-diseases" class="suggestion-list" style="display:none;">
+            <li>
+                <a href="remediesnextpage.html?disease=Fever">
+                    <img src="../Assest/images/vector-feverish-person-lying-bed_844724-13044.avif" alt="Fever" class="suggestion-image">
+                    <span class="image-name">Fever</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="remediesnextpage.html?disease=Headaches">
+                    <img src="../Assest/images/headache.jpg" alt="Headaches" class="suggestion-image">
+                    <span class="image-name">Headaches</span>
+                </a>
+            </li>
+            <li>
+                <a href="remediesnextpage.html?disease=allergies">
+                    <img src="../Assest/images/allergies.jpg" alt="allergies" class="suggestion-image">
+                    <span class="image-name">Allergies</span>
+                </a>
+            </li>
+            <li>
+                <a href="remediesnextpage.html?disease=Bone%20Cancer">
+                    <img src="../Assest/images/bone cancer.png" alt="Bone Cancer" class="suggestion-image">
+                    <span class="image-name">Bone Cancer</span>
+                </a>
+            </li>
+            <li>
+                <a href="remediesnextpage.html?disease=Breast%20Cancer">
+                    <img src="../Assest/images/breast cancer.jpg" alt="Breast Cancer" class="suggestion-image">
+                    <span class="image-name">Breast Cancer</span>
+                </a>
+            </li>
+            <li>
+                <a href="remediesnextpage.html?disease=cold&Flu">
+                    <img src="../Assest/images/cold and flu.jpg" alt="Cold & Flu" class="suggestion-image">
+                    <span class="image-name">Cold & Flu</span>
+                </a>
+            </li>
+            <li>
+                <a href="remediesnextpage.html?disease=Depression">
+                    <img src="../Assest/images/depression.jpg" alt="Depression" class="suggestion-image">
+                    <span class="image-name">Depression</span>
+                </a>
+            </li>
+            <li>
+                <a href="remediesnextpage.html?disease=Ear%20Infections">
+                    <img src="../Assest/images/ear infections.jpg" alt="Ear Infections" class="suggestion-image">
+                    <span class="image-name">Ear Infections</span>
+                </a>
+            </li>
+            <li>
+                <a href="remediesnextpage.html?disease=Esophageal%20Cancer">
+                    <img src="../Assest/images/Esophageal Cancer.png" alt="Esophageal Cancer" class="suggestion-image">
+                    <span class="image-name">Esophageal Cancer</span>
+                </a>
+            </li>
+        </div>
+        <br>
+    </div>
+
+    
+
+    <script>
+        function searchDisease() {
+            const disease = document.getElementById('search-bar').value.trim().toLowerCase();
+            if (disease) {
+                window.location.href = `pages/remediesnextpage.html?disease=${encodeURIComponent(disease)}`;
+            } else {
+                alert("Please enter a disease.");
+            }
+        }
+
+
+        // Function to show more diseases
+        function showMoreDiseases() {
+            var moreDiseases = document.getElementById('more-diseases');
+            var moreBtn = document.getElementById('more-btn');
+
+            // Show the hidden diseases
+            moreDiseases.style.display = 'flex'; // Change 'display' from 'none' to 'flex' to match existing layout.
+
+            // Optionally hide the "More" button after clicking
+            moreBtn.style.display = 'none';
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,325 @@
+/* General Box-Sizing */
+* {
+    box-sizing: border-box;
+}
+
+/* Body and Container Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin: 40px 0;
+    animation: fadeIn 2s ease-in-out;
+}
+
+header h1 {
+    font-size: 3rem;
+    color: #4A90E2;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Search Section Styles */
+.search-section {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.search-section input,
+.search-section select,
+.search-section button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.search-section input {
+    width: 300px;
+}
+
+.search-section button {
+    background-color: #4A90E2;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.search-section button:hover {
+    background-color: #357ABD;
+    transform: scale(1.05);
+}
+
+/* Button Click Animation */
+#searchButton:active {
+    animation: loadingSpin 0.6s linear infinite;
+}
+
+@keyframes loadingSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Results Section Styles */
+.results-section {
+    text-align: center;
+    margin: 20px 0;
+    opacity: 0;
+    animation: slideIn 1s forwards;
+}
+
+.results-section h2 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.results-section p {
+    font-size: 1.2rem;
+}
+
+/* Slide-in Animation */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Services Offered Styles */
+.services-offered {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: rgba(207, 245, 245, 0.9);
+    border-radius: 10px;
+    margin: 40px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.services-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(218, 216, 216, 0.2);
+    margin: 15px;
+    padding: 20px;
+    width: 250px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    background-color: rgb(198, 234, 231);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Pulse Animation for Service Cards */
+.service-card:hover {
+    animation: pulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}
+
+/* Why Choose Us Section Styles */
+.why-choose-us {
+    background-color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    margin: 40px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.why-choose-us h2 {
+    margin-bottom: 30px;
+}
+
+.why-choose-us .card {
+    display: inline-block;
+    width: 400px;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #e8d9d9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+}
+
+.why-choose-us .card:nth-child(1) { animation-delay: 0.2s; }
+.why-choose-us .card:nth-child(2) { animation-delay: 0.4s; }
+.why-choose-us .card:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Related Searches Styles */
+.related-searches {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 40px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.related-searches h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.related-searches ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.related-searches li {
+    margin: 10px 0;
+}
+
+.related-searches a {
+    text-decoration: none;
+    color: #4A90E2;
+    font-size: 1.2rem;
+}
+
+.related-searches a:hover {
+    text-decoration: underline;
+    color: #357ABD;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #4A90E2;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+.footer-content {
+    max-width: 600px;
+    margin: auto;
+}
+
+.footer-content h3 {
+    margin: 0;
+}
+
+.footer-content p {
+    margin: 5px 0;
+}
+
+.social-links {
+    margin: 10px 0;
+}
+
+.social-links a {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.5rem;
+   
+
+display: inline-block;
+transition: transform 0.2s;
+}
+
+.social-links a:hover {
+animation: pulse 1s infinite;
+color: #FFC107;
+}
+
+/* Pulse Effect for Icons */
+@keyframes pulse {
+0%, 100% {
+    transform: scale(1);
+}
+50% {
+    transform: scale(1.1);
+}
+}
+
+/* Glow Animation */
+button {
+transition: box-shadow 0.3s;
+}
+
+button:hover {
+box-shadow: 0 0 15px 3px rgba(74, 144, 226, 0.6);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+.search-section {
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-section input,
+.search-section select,
+.search-section button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.services-cards,
+.info-cards {
+    flex-direction: column;
+    align-items: center;
+}
+}

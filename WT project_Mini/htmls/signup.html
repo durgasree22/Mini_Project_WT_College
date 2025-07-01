@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Health Navigator</title>
+    <link rel="stylesheet" href="../Assest/Styles/">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #e9f5e9; /* Light green background */
+            animation: fadeIn 1s ease-in-out; /* Fade-in effect for body */
+        }
+
+        /* Signup Container */
+        .signup-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #ffffff; /* White background for the container */
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+            text-align: center;
+            transform: translateY(-20px); /* Initial position for animation */
+            opacity: 0; /* Initial opacity */
+            animation: slideIn 0.5s forwards; /* Slide-in effect */
+        }
+
+        @keyframes slideIn {
+            to {
+                transform: translateY(0); /* Move to original position */
+                opacity: 1; /* Fade in */
+            }
+        }
+
+        /* Signup Box */
+        .signup-box h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #0056b3; /* Darker blue for the heading */
+        }
+
+        .signup-box form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Input Groups */
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            color: #666666; /* Grey for labels */
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #007bff; /* Blue border */
+            border-radius: 5px;
+            margin-top: 5px;
+            transition: border-color 0.3s; /* Transition for border color */
+        }
+
+        .input-group input:focus {
+            border-color: #0056b3; /* Darker blue on focus */
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle shadow on focus */
+        }
+
+        /* Signup Button */
+        .signup-btn {
+            padding: 10px;
+            background-color: #007bff; /* Blue background */
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.2s; /* Transition for background and scale */
+        }
+
+        .signup-btn:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            transform: scale(1.05); /* Slightly larger on hover */
+        }
+
+        .signup-box p {
+            font-size: 14px;
+            color: #555555; /* Dark grey for paragraph text */
+            margin-top: 15px;
+        }
+
+        .signup-box a {
+            color: #007bff; /* Blue for the link */
+            text-decoration: none;
+        }
+
+        .signup-box a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="signup-container">
+        <div class="signup-box">
+            <h2>Create Your Account</h2>
+            <form action="../codes/phps/register.php" method="POST">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                <button type="submit" class="signup-btn">Sign Up</button>
+                <p>Already have an account? <a href="login.html">Log In</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facts About Health</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Facts About Health</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Roboto', sans-serif;
+                background-color: #ADD8E6;
+                margin: 0;
+                padding: 20px;
+            }
+
+            h1 {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                text-align: center;
+                background: linear-gradient(135deg, #76c7c0, #007BFF);
+                color: #fff;
+                padding: 20px;
+                margin: 0 auto;
+                width: 90%;
+                max-width: 600px;
+                border-radius: 12px;
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+                animation: wobble 1s;
+                font-size: 2.5rem;
+                transform-origin: center;
+                position: relative;
+            }
+
+            h1::after {
+                content: '💪🌿';
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                font-size: 1.5rem;
+                animation: pulse 2s infinite;
+            }
+
+            @keyframes colorGrow {
+                from {
+                    transform: scale(1);
+                    color: #000;
+                }
+
+                to {
+                    transform: scale(1.2);
+                    color: #007BFF;
+                }
+            }
+
+            .grid-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                max-width: 1200px;
+                margin: auto;
+            }
+
+            .card {
+                background-color: #ffffff;
+                border: 1px solid #e0e0e0;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                margin: 10px;
+                flex: 1 1 auto;
+                max-width: 300px;
+                opacity: 0;
+                transform: scale(0.8) translateY(20px);
+                /* Start smaller */
+                transition: opacity 0.5s ease, transform 0.5s ease;
+                /* Smooth transition */
+            }
+
+            .card.show {
+                opacity: 1;
+                /* Fade in */
+                transform: scale(1) translateY(0);
+                /* Grow to original size */
+            }
+
+            .card:hover {
+                transform: scale(1.05);
+                /* Scale on hover */
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
+
+            .card img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                transition: transform 0.3s;
+            }
+
+            .card:hover img {
+                transform: scale(1.1);
+            }
+
+            .card-content {
+                padding: 15px;
+            }
+
+            .card-content h3 {
+                font-size: 1.2rem;
+                margin: 0 0 10px;
+                transition: color 0.3s;
+            }
+
+            .card-content h3:hover {
+                color: #007BFF;
+            }
+
+            .card-content p {
+                font-size: 1rem;
+                color: #555;
+                margin: 0;
+                line-height: 1.6;
+            }
+
+            @keyframes wobble {
+                0% {
+                    transform: translate(0);
+                }
+
+                25% {
+                    transform: translate(-5px);
+                }
+
+                50% {
+                    transform: translate(5px);
+                }
+
+                75% {
+                    transform: translate(-5px);
+                }
+
+                100% {
+                    transform: translate(0);
+                }
+            }
+        </style>
+    </head>
+
+<body>
+    <h1>Health facts</h1> <br><br><br>
+    <div class="grid-container">
+        <!-- Card 1 -->
+        <div class="card">
+            <img src="../Assest/images/coffee.jpg" alt="Health Fact 1">
+            <div class="card-content">
+                <h3>Drinking a cup of coffee can reduce feelings of depression</h3>
+                <p>cup of coffee can boost your mood and lower your risk of depression. But don’t go for the decaf. You
+                    need caffeine for this effect.</p>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <img src="../Assest/images/dog.jpg" alt="Health Fact 2">
+            <div class="card-content">
+                <h3>Owning a dog may reduce heart disease risk.</h3>
+                <p>owning pets improves mental health and may lower blood pressure and cholesterol levels, lowering your
+                    risk for heart disease.</p>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <img src="../Assest/images/nose.jpg" alt="Health Fact 3">
+            <div class="card-content">
+                <h3>Your nose has a superpower.</h3>
+                <p>The average human nose can remember 50,000 different smells. While a dog’s nose may be more powerful,
+                    that number’s still impressive.</p>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <img src="../Assest/images/body heat.jpg" alt="Health Fact 4">
+            <div class="card-content">
+                <h3>The body can produce enough heat in just half an hour to boil water</h3>
+                <p>Each hour, the human body creates 350,000 joules of energy, which creates the same amount of energy
+                    as a 100-watt light bulb. This ends up being enough heat to boil a half gallon of water in just 30
+                    minutes.</p>
+            </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="card">
+            <img src="../Assest/images/laughter.jpg" alt="Health Fact 5">
+            <div class="card-content">
+                <h3>Laughter can boost your immune system</h3>
+                <p>Laughing increases the release of antibodies and immune cells in the body, helping you fight off
+                    infections and improving your resilience to disease.</p>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card">
+            <img src="../Assest/images/hydration.jpg" alt="Health Fact 6">
+            <div class="card-content">
+                <h3>Staying hydrated can improve memory and focus</h3>
+                <p>Drinking enough water is crucial for brain health. Dehydration, even in mild forms, can lead to
+                    impaired cognitive performance and reduced memory.</p>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card">
+            <img src="../Assest/images/sunlight.jpg" alt="Health Fact 7">
+            <div class="card-content">
+                <h3>Sunlight boosts serotonin levels</h3>
+                <p>Exposure to sunlight triggers the release of serotonin, a hormone that enhances mood, focus, and
+                    overall mental health, reducing risks of seasonal depression.</p>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="card">
+            <img src="../Assest/images/dark-chocolate.jpg" alt="Health Fact 8">
+            <div class="card-content">
+                <h3>Dark chocolate can improve brain function</h3>
+                <p>Dark chocolate is rich in flavonoids that improve blood flow to the brain, enhancing cognitive
+                    function and providing protective effects against cognitive decline.</p>
+            </div>
+        </div>
+        <!-- Card 9 -->
+        <div class="card">
+            <img src="../Assest/images/exercise.jpg" alt="Health Fact 9">
+            <div class="card-content">
+                <h3>Regular exercise can boost mental clarity</h3>
+                <p>Engaging in physical activity increases blood flow to the brain, leading to better memory, learning
+                    capabilities, and mental clarity.</p>
+            </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="card">
+            <img src="../Assest/images/sleep.jpg" alt="Health Fact 10">
+            <div class="card-content">
+                <h3>Quality sleep can improve heart health</h3>
+                <p>Adequate sleep supports cardiovascular health by reducing stress on the heart, lowering blood
+                    pressure, and helping to regulate cholesterol levels.</p>
+            </div>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="card">
+            <img src="../Assest/images/vegetables.jpg" alt="Health Fact 11">
+            <div class="card-content">
+                <h3>Eating leafy greens promotes eye health</h3>
+                <p>Leafy greens like spinach and kale are high in antioxidants like lutein, which helps protect your
+                    eyes from age-related diseases like macular degeneration.</p>
+            </div>
+        </div>
+
+        <!-- Card 12 -->
+        <div class="card">
+            <img src="../Assest/images/music.jpg" alt="Health Fact 12">
+            <div class="card-content">
+                <h3>Listening to music can reduce stress</h3>
+                <p>Studies show that listening to soothing music can lower cortisol levels, which helps decrease stress
+                    and enhances relaxation and mental health.</p>
+            </div>
+        </div>
+
+        <!-- Card 13 -->
+        <div class="card">
+            <img src="../Assest/images/yoga.jpg" alt="Health Fact 13">
+            <div class="card-content">
+                <h3>Yoga can improve flexibility and balance</h3>
+                <p>Regular yoga practice enhances flexibility, balance, and strength, leading to a healthier body and
+                    reducing the risk of injuries.</p>
+            </div>
+        </div>
+
+        <!-- Card 14 -->
+        <div class="card">
+            <img src="../Assest/images/berries.jpg" alt="Health Fact 14">
+            <div class="card-content">
+                <h3>Eating berries supports brain health</h3>
+                <p>Berries, especially blueberries, are rich in antioxidants and can help protect the brain from
+                    oxidative stress, enhancing memory and cognitive functions.</p>
+            </div>
+        </div>
+
+        <!-- Card 15 -->
+        <div class="card">
+            <img src="../Assest/images/smile.jpg" alt="Health Fact 15">
+            <div class="card-content">
+                <h3>Smiling can lower stress and blood pressure</h3>
+                <p>Smiling, even when you don't feel happy, can trick your brain into reducing stress and may even lower
+                    blood pressure, contributing to overall health.</p>
+            </div>
+        </div>
+
+        <!-- Card 16 -->
+        <div class="card">
+            <img src="../Assest/images/chewing.jpg" alt="Health Fact 16">
+            <div class="card-content">
+                <h3>Chewing gum can improve concentration</h3>
+                <p>Research suggests that chewing gum increases blood flow to the brain, leading to better concentration
+                    and memory during cognitive tasks.</p>
+            </div>
+        </div>
+        <!-- Card 17 -->
+        <div class="card">
+            <img src="../Assest/images/coldshowers.jpg" alt="Health Fact 17">
+            <div class="card-content">
+                <h3>Cold showers can boost your immune system</h3>
+                <p>Taking cold showers can improve blood circulation, boost the immune system, and even increase
+                    alertness and energy levels.</p>
+            </div>
+        </div>
+
+        <!-- Card 18 -->
+        <div class="card">
+            <img src="../Assest/images/brainplasticity.jpg" alt="Health Fact 18">
+            <div class="card-content">
+                <h3>The brain can rewire itself at any age</h3>
+                <p>Neuroplasticity allows the brain to adapt by forming new neural connections, helping you learn new
+                    skills and recover from injuries even as you age.</p>
+            </div>
+        </div>
+
+        <!-- Card 19 -->
+        <div class="card">
+            <img src="../Assest/images/meditation.jpg" alt="Health Fact 19">
+            <div class="card-content">
+                <h3>Meditation can improve emotional health</h3>
+                <p>Practicing meditation regularly increases self-awareness, reduces negative emotions, and promotes
+                    mental resilience against stress.</p>
+            </div>
+        </div>
+
+        <!-- Card 20 -->
+        <div class="card">
+            <img src="../Assest/images/guthealth.png" alt="Health Fact 20">
+            <div class="card-content">
+                <h3>Gut health impacts your mental health</h3>
+                <p>The gut-brain connection means that maintaining a healthy gut through probiotics and a balanced diet
+                    can improve your mood and mental well-being.</p>
+            </div>
+        </div>
+
+        <!-- Card 21 -->
+        <div class="card">
+            <img src="../Assest/images/fiber.jpg" alt="Health Fact 21">
+            <div class="card-content">
+                <h3>Fiber aids in weight management</h3>
+                <p>High-fiber foods promote fullness and reduce appetite, helping with weight management by preventing
+                    overeating.</p>
+            </div>
+        </div>
+
+        <!-- Card 22 -->
+        <div class="card">
+            <img src="../Assest/images/stretching.jpg" alt="Health Fact 22">
+            <div class="card-content">
+                <h3>Stretching reduces muscle stiffness</h3>
+                <p>Stretching regularly helps prevent muscle stiffness and increases flexibility, reducing the risk of
+                    strains and injuries.</p>
+            </div>
+        </div>
+
+        <!-- Card 23 -->
+        <div class="card">
+            <img src="../Assest/images/reading.jpg" alt="Health Fact 23">
+            <div class="card-content">
+                <h3>Reading can reduce stress</h3>
+                <p>Reading a book for as little as 6 minutes a day can reduce stress by up to 68%, slowing down your
+                    heart rate and easing muscle tension.</p>
+            </div>
+        </div>
+
+        <!-- Card 24 -->
+        <div class="card">
+            <img src="../Assest/images/social-connections.jpg" alt="Health Fact 24">
+            <div class="card-content">
+                <h3>Social connections are essential for longevity</h3>
+                <p>People with strong social networks tend to live longer and have a lower risk of heart disease,
+                    depression, and stress-related illnesses.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="../Assest/images/hydrationskin.jpg" alt="Health Fact 25">
+            <div class="card-content">
+                <h3>Drinking water improves skin health</h3>
+                <p>Staying hydrated helps keep your skin clear, improves elasticity, and can reduce the appearance of
+                    wrinkles and dryness.</p>
+            </div>
+        </div>
+
+        <!-- Card 26 -->
+        <div class="card">
+            <img src="../Assest/images/powernap.jpg" alt="Health Fact 26">
+            <div class="card-content">
+                <h3>Power naps can enhance productivity</h3>
+                <p>A short 20-minute nap can improve mood, increase alertness, and boost cognitive performance without
+                    interfering with nighttime sleep.</p>
+            </div>
+        </div>
+
+        <!-- Card 27 -->
+        <div class="card">
+            <img src="../Assest/images/omega3.jpg" alt="Health Fact 27">
+            <div class="card-content">
+                <h3>Omega-3s are essential for brain health</h3>
+                <p>Omega-3 fatty acids found in fish, nuts, and seeds are critical for brain health, improving memory,
+                    focus, and reducing mental decline with age.</p>
+            </div>
+        </div>
+
+        <!-- Card 28 -->
+        <div class="card">
+            <img src="../Assest/images/laughter.jpg" alt="Health Fact 28">
+            <div class="card-content">
+                <h3>Laughter can burn calories</h3>
+                <p>Laughing for 10-15 minutes can burn up to 40 calories, supporting both mental well-being and a small
+                    boost in physical health.</p>
+            </div>
+        </div>
+
+        <!-- Card 29 -->
+        <div class="card">
+            <img src="../Assest/images/protein.jpg" alt="Health Fact 29">
+            <div class="card-content">
+                <h3>Eating protein at breakfast boosts metabolism</h3>
+                <p>Starting your day with a high-protein meal can stabilize blood sugar, reduce cravings, and help with
+                    weight management by boosting metabolism.</p>
+            </div>
+        </div>
+
+        <!-- Card 30 -->
+        <div class="card">
+            <img src="../Assest/images/blue light.jpg" alt="Health Fact 30">
+            <div class="card-content">
+                <h3>Blue light affects sleep quality</h3>
+                <p>Exposure to blue light from screens can suppress melatonin production, making it harder to fall
+                    asleep and affecting overall sleep quality.</p>
+            </div>
+        </div>
+
+        <!-- Card 31 -->
+        <div class="card">
+            <img src="../Assest/images/spices.jpg" alt="Health Fact 31">
+            <div class="card-content">
+                <h3>Spices like turmeric can reduce inflammation</h3>
+                <p>Turmeric and other spices contain anti-inflammatory compounds, which can reduce joint pain, improve
+                    digestion, and support overall health.</p>
+            </div>
+        </div>
+
+       
+        <!-- Card 33 -->
+        <div class="card">
+            <img src="../Assest/images/greentea.jpg" alt="Health Fact 33">
+            <div class="card-content">
+                <h3>Green tea boosts metabolism and brain function</h3>
+                <p>Green tea contains antioxidants and caffeine, which can enhance metabolism, improve brain function,
+                    and even support fat burning.</p>
+            </div>
+        </div>
+
+        <!-- Card 34 -->
+        <div class="card">
+            <img src="../Assest/images/sunlight.jpg" alt="Health Fact 34">
+            <div class="card-content">
+                <h3>Vitamin D is crucial for immune health</h3>
+                <p>Vitamin D, often obtained from sunlight, plays a key role in immune function, bone health, and
+                    reducing the risk of chronic diseases.</p>
+            </div>
+        </div>
+
+        <!-- Card 35 -->
+        <div class="card">
+            <img src="../Assest/images/naturewalks.jpg" alt="Health Fact 35">
+            <div class="card-content">
+                <h3>Nature walks reduce anxiety and improve mood</h3>
+                <p>Spending time in nature can lower stress, improve mood, and boost focus, making it beneficial for
+                    mental and emotional health.</p>
+            </div>
+        </div>
+
+        <!-- Card 36 -->
+        <div class="card">
+            <img src="../Assest/images/wholegrains.jpg" alt="Health Fact 36">
+            <div class="card-content">
+                <h3>Whole grains support digestive health</h3>
+                <p>Whole grains like oats, quinoa, and brown rice are high in fiber, which promotes gut health and helps
+                    maintain a healthy digestive system.</p>
+            </div>
+        </div>
+
+        <!-- Card 37 -->
+        <div class="card">
+            <img src="../Assest/images/clapping.jpg" alt="Health Fact 37">
+            <div class="card-content">
+                <h3>Clapping improves circulation</h3>
+                <p>Clapping activates acupressure points on the hands, enhancing blood circulation and promoting
+                    relaxation in the body.</p>
+            </div>
+        </div>
+
+        <!-- Card 38 -->
+        <div class="card">
+            <img src="../Assest/images/garlic.jpg" alt="Health Fact 38">
+            <div class="card-content">
+                <h3>Garlic boosts the immune system</h3>
+                <p>Garlic has antimicrobial and antioxidant properties, which can help protect against infections and
+                    support immune function.</p>
+            </div>
+        </div>
+
+        <!-- Card 39 -->
+        <div class="card">
+            <img src="../Assest/images/mindfulness.jpg" alt="Health Fact 39">
+            <div class="card-content">
+                <h3>Mindfulness improves focus and reduces stress</h3>
+                <p>Practicing mindfulness techniques, like deep breathing, can help improve concentration, reduce
+                    stress, and enhance emotional resilience.</p>
+            </div>
+        </div>
+
+       
+        <!-- Card 41 -->
+        <div class="card">
+            <img src="../Assest/images/dark-chocolate.jpg" alt="Health Fact 41">
+            <div class="card-content">
+                <h3>Dark chocolate can improve heart health</h3>
+                <p>Dark chocolate is rich in antioxidants that may reduce inflammation, lower blood pressure, and
+                    improve heart health when consumed in moderation.</p>
+            </div>
+        </div>
+
+        <!-- Card 42 -->
+        <div class="card">
+            <img src="../Assest/images/posture.jpg" alt="Health Fact 42">
+            <div class="card-content">
+                <h3>Good posture can boost confidence and energy</h3>
+                <p>Maintaining good posture improves blood flow and supports proper alignment, which can increase energy
+                    levels and enhance self-confidence.</p>
+            </div>
+        </div>
+
+        <!-- Card 43 -->
+        <div class="card">
+            <img src="../Assest/images/avocado.jpg" alt="Health Fact 43">
+            <div class="card-content">
+                <h3>Avocados are nutrient-dense and heart-healthy</h3>
+                <p>Avocados contain healthy fats, fiber, and potassium, supporting heart health and helping to manage
+                    cholesterol levels.</p>
+            </div>
+        </div>
+
+        <!-- Card 44 -->
+        <div class="card">
+            <img src="../Assest/images/breathing.jpg" alt="Health Fact 44">
+            <div class="card-content">
+                <h3>Deep breathing reduces stress</h3>
+                <p>Practicing deep breathing exercises helps calm the nervous system, reduces stress, and promotes
+                    relaxation and mental clarity.</p>
+            </div>
+        </div>
+
+        <!-- Card 45 -->
+        <div class="card">
+            <img src="../Assest/images/spicyfood.jpg" alt="Health Fact 45">
+            <div class="card-content">
+                <h3>Spicy foods may boost metabolism</h3>
+                <p>Spices like chili contain capsaicin, which can increase calorie burning and may aid in weight
+                    management when eaten regularly.</p>
+            </div>
+        </div>
+
+        <!-- Card 46 -->
+        <div class="card">
+            <img src="../Assest/images/sunexposure.jpg" alt="Health Fact 46">
+            <div class="card-content">
+                <h3>Moderate sun exposure boosts mood</h3>
+                <p>Spending time in the sun helps your body produce vitamin D and can elevate serotonin levels,
+                    improving mood and mental health.</p>
+            </div>
+        </div>
+
+        <!-- Card 47 -->
+        <div class="card">
+            <img src="../Assest/images/mentalhealth.jpg" alt="Health Fact 47">
+            <div class="card-content">
+                <h3>Taking mental health days can improve productivity</h3>
+                <p>Occasionally taking time off to focus on mental well-being reduces burnout, improves overall
+                    productivity, and boosts job satisfaction.</p>
+            </div>
+        </div>
+
+       
+        <!-- Card 49 -->
+        <div class="card">
+            <img src="../Assest/images/musictherapy.jpg" alt="Health Fact 49">
+            <div class="card-content">
+                <h3>Music can enhance mood and reduce anxiety</h3>
+                <p>Listening to music you enjoy can trigger the release of dopamine, improving mood and reducing
+                    feelings of anxiety and stress.</p>
+            </div>
+        </div>
+
+        <!-- Card 50 -->
+        <div class="card">
+            <img src="../Assest/images/brain.jpg" alt="Health Fact 50">
+            <div class="card-content">
+                <h3>Exercise boosts brain health</h3>
+                <p>Regular physical activity increases blood flow to the brain, promoting the growth of new brain cells
+                    and enhancing memory and cognitive function.</p>
+            </div>
+        </div>
+        <!-- Card 44 -->
+        <div class="card">
+            <img src="../Assest/images/smell.jpg" alt="Health Fact 44">
+            <div class="card-content">
+                <h3>A strong sense of smell is linked to better memory</h3>
+                <p>The olfactory bulb in the brain is closely connected to areas associated with memory. Research shows
+                    that
+                    people with a keen sense of smell often perform better on memory tasks and may have a lower risk of
+                    cognitive decline.</p>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cards = document.querySelectorAll('.card');
+
+            const observerOptions = {
+                root: null, // Use the viewport as the root
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the card is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show'); // Add the class to trigger animation
+                        observer.unobserve(entry.target); // Stop observing the card after it has been shown
+                    }
+                });
+            }, observerOptions);
+
+            cards.forEach(card => {
+                observer.observe(card); // Observe each card
+            });
+        });
+    </script>
+
+</body>
+
+</html>
