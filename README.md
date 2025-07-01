@@ -73,17 +73,17 @@ WT_project_Mini/
 1. Download or clone the project:
    ```bash
    git clone https://github.com/your-username/WT_project_Mini.git
-Open htmls/index.html in a browser (use Live Server if using VS Code).
+2. Open htmls/index.html in a browser (use Live Server if using VS Code).
 
-Ensure all paths are intact:
+3. Ensure all paths are intact:
 
-CSS: ../Asset/Styles/styles.css
+  CSS: ../Asset/Styles/styles.css
 
-Images: ../Asset/images/
+  Images: ../Asset/images/
 
-JS: from codes/JavaScripts/
+  JS: from codes/JavaScripts/
 
-PHP files: from codes/phps/
+  PHP files: from codes/phps/
 
 📬 Contact
 For questions or feedback, contact:
