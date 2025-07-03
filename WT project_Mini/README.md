@@ -18,6 +18,7 @@ Students of **Computer Science and Engineering**,
 ---
 
 ## 📁 Project Structure
+```
 
 WT_project_Mini/
 ├── Asset/
@@ -29,7 +30,7 @@ WT_project_Mini/
 ├── htmls/ # All HTML web pages (home, news, tools, etc.)
 ├── README.md # Project documentation (this file)
 
----
+```
 
 ## 🌐 Website Pages Overview
 
