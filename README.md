@@ -16,7 +16,7 @@ This project was collaboratively built by:
 Students of **Computer Science and Engineering**,  
 **Mohan Babu University**
 
----
+```
 
 ## 📁 Project Structure
 
@@ -45,7 +45,7 @@ WT_project_Mini/
 | `contactdetails.html`    | Contact form for user feedback/support       |
 | `login.html`, `signup.html` | User authentication pages                |
 
----
+```
 
 ## 🔧 Technologies Used
 
